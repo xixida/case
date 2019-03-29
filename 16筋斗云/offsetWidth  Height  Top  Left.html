@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>offset家族</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				border: 2px solid red;
+				padding: 20px;
+				margin: 10px;
+				background: pink;
+				position: absolute;
+			}
+			.box .small{
+				width: 100px;
+				height: 100px;
+				background: paleturquoise;
+				border: 2px solid fuchsia;
+				padding: 20px;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" style="border: 2px solid red; height: 200px; width: 200px; padding: 20px; margin: 10px; background: pink;">
+			<div class="small">
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var box = document.getElementsByClassName("box")[0];
+//		//offsetWidth  offsetHeight
+//		//offsetWidth=width+左右border+左右padding
+//		//offsetHeight=height+左右border+左右padding
+//		//css样式在哪里都能读得到
+//		//读取到的值不带单位
+//		//只读属性：只能读不能改
+//		console.log("box.offsetWidth="+box.offsetWidth);
+//		console.log("box.offsetHeight="+box.offsetHeight);
+//		//obj.style.width  obj.style.height
+//		//只能读取行内样式
+//		//读取到的值带单位（px）
+//		//可读可写属性
+//		console.log("box.style.width="+box.style.width);
+//		console.log("box.style.height="+box.style.height);
+		var small=box.children[0];
+		//offsetLeft  offserTop
+		//取值：该元素距左/上边框（不包含边框）距离它的具有定位的父级元素的左/上边框之间的值（不包含边框的值）
+		//如果父级元素没有定位，一直向上找具有定位的父级元素
+		//如果都没有找到，那就是与body之间的距离
+		//随便
+		console.log("small.offsetLeft="+small.offsetLeft);
+		console.log("small.offsetTop="+small.offsetTop);
+		
+		//obj.style.left right top bottom z-index
+		//只有定位的元素才有上面的四个属性
+		obj.style.left="3px";
+	</script>
+</html>

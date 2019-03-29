@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 340px;
+				height: 30px;
+				margin: 100px auto;
+				background: url(img/bg.jpg) no-repeat;
+			}
+			ul{
+				list-style: none;
+			}
+			ul li{
+				width: 100px;
+				height: 30px;
+				background: url(img/libg.jpg) no-repeat;
+				float: left;
+				text-align: center;
+				line-height: 30px;
+				margin-left: 10px;
+				cursor: pointer;
+			}
+			ul ul{
+				margin-left: -10px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<ul>
+				<li>
+					一级菜单
+					<ul>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+					</ul>
+				</li>
+				<li>
+					一级菜单
+					<ul>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+					</ul>
+				</li>
+				<li>
+					一级菜单
+					<ul>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+						<li>二级菜单</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function List(id){
+			this.obj=document.getElementById(id);
+			this.lis=this.obj.children[0].children;
+		}
+		List.prototype.show=function(obj){
+			obj.style.display="block";
+		}
+		List.prototype.hidden=function(obj){
+			obj.style.display="none";
+		}
+		List.prototype.init=function(){
+			var that=this;
+			for (var i=0;i<this.lis.length;i++) {
+				this.lis[i].onmouseover=function(){
+					that.show(this.children[0]);
+				}
+				this.lis[i].onmouseout=function(){
+					that.hidden(this.children[0]);
+				}
+			}
+		}
+		var list=new List("box");
+		list.init();
+	</script>
+</html>

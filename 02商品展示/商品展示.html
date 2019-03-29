@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 360px;
+				border: 1px solid gray;
+				margin: 100px auto;
+				padding-top: 360px;
+				background-image: url(images/01big.jpg);
+				background-repeat: no-repeat;
+				
+			}
+			.box ul{
+				list-style: none;
+				height: 70px;
+				border-top: 1px solid gray;
+				/*overflow: hidden;*/
+			}
+			.box ul li{
+				float: left;
+				cursor: pointer;
+			}		
+		</style>
+		<script>
+			window.onload=function(){
+				var box=document.getElementById("box");
+				var lis=document.getElementsByTagName("li");
+//				lis[0].onmouseover=function(){
+//					box.style.backgroundImage="url(images/01big.jpg)";
+//				}
+//				lis[1].onmouseover=function(){
+//					box.style.backgroundImage="url(images/02big.jpg)";
+//				}
+//				lis[2].onmouseover=function(){
+//					box.style.backgroundImage="url(images/03big.jpg)";
+//				}
+//				lis[3].onmouseover=function(){
+//					box.style.backgroundImage="url(images/04big.jpg)";
+//				}
+//				lis[4].onmouseover=function(){
+//					box.style.backgroundImage="url(images/05big.jpg)";
+//				}
+				
+				function changeBI(obj1,obj2,imgUrl){
+					obj1.onmouseover=function(){
+						obj2.style.backgroundImage=imgUrl;
+					}
+				}
+//				changeBI(lis[0],box,"url(images/01big.jpg)");
+//				changeBI(lis[1],box,"url(images/02big.jpg)");
+//				changeBI(lis[2],box,"url(images/03big.jpg)");
+//				changeBI(lis[3],box,"url(images/04big.jpg)");
+//				changeBI(lis[4],box,"url(images/05big.jpg)");
+				var imgUsls=["url(images/01big.jpg)","url(images/02big.jpg)","url(images/03big.jpg)","url(images/04big.jpg)","url(images/05big.jpg)"];
+				for(var i=0;i<lis.length;i++){
+					changeBI(lis[i],box,imgUsls[i]);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<ul>
+				<li><img src="images/01.jpg"></li>
+				<li><img src="images/02.jpg"></li>
+				<li><img src="images/03.jpg"></li>
+				<li><img src="images/04.jpg"></li>
+				<li><img src="images/05.jpg"></li>
+			</ul>
+		</div>
+	</body>
+</html>

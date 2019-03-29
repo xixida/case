@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				display: block;
+			}
+			.box{
+				width: 490px;
+				height: 170px;
+				padding: 5px;
+				border: 1px solid black;
+				margin: 100px auto;
+				position: relative;
+			}
+			.box .inner{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				position: relative;
+			}
+			.box .inner ul{
+				width: 600%;
+				list-style: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.box .inner ul li{
+				float: left;
+			}
+			.box .inner .arrows{
+				width: 100%;
+				height: 20px;
+				position: absolute;
+				left: 0;
+				top: 50%;
+				margin-top: -10px;
+			}
+			.box .inner .arrows span{
+				background: rgba(0,0,0,.5);
+				width: 20px;
+				height: 20px;
+				color: white;
+				font-size: 20px;
+				font-weight: 700;
+				text-align: center;
+				line-height: 20px;
+				cursor: pointer;
+				display: none;
+			}
+			.box .inner .arrows #left-arrow{
+				float: left;
+				border-bottom-right-radius: 20px;
+				border-top-right-radius: 20px;
+			}
+			.box .inner .arrows #right-arrow{
+				float: right;
+				border-bottom-left-radius: 20px;
+				border-top-left-radius: 20px;
+			}
+			.box ol{
+				list-style: none;
+				position: absolute;
+				top: 145px;
+				left: 50%;
+				margin-left: -70px;
+			}
+			.box ol li{
+				float: left;
+				width: 22px;
+				height: 22px;
+				background: white;
+				color: black;
+				margin-left: 6px;
+				text-align: center;
+				line-height: 22px;
+				cursor: pointer;
+			}
+			.box ol li.current{
+				background: #fda600;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var box=document.getElementById("box");
+				var ul=box.children[0].children[0];
+				console.log(ul);
+				var ollis=box.children[1].children;
+				console.log(ollis);
+				var leader=0;
+				var target=0;
+				for (var i=0;i<ollis.length;i++) {
+					ollis[i].index=i;
+					ollis[i].onmouseover=function(){
+						target=-this.index*490;
+						//当鼠标在指示器上移动时，clickNum的值也要跟着变
+						for (var i=0;i<ollis.length;i++) {
+							ollis[i].className="";
+						}
+						this.className="current";
+					}
+				}
+				setInterval(fn,30);
+				function fn(){
+					leader=leader+(target-leader)/10;
+					ul.style.left=leader+"px";
+				}
+				var leftArrow=document.getElementById("left-arrow");
+				var rightArrow=document.getElementById("right-arrow");
+				//当鼠标放在大盒子上，span显示
+				box.onmouseover=function(){
+					leftArrow.style.display="block";
+					rightArrow.style.display="block";
+				}
+				box.onmouseout=function(){
+					leftArrow.style.display="none";
+					rightArrow.style.display="none";
+				}
+				//点击的次数
+				var clickNum=0;
+				leftArrow.onclick=function(){
+					if(target<=-4*490){
+
+					}else{
+						clickNum++;
+					}
+					target=-clickNum*490;
+					for(var i=0;i<ollis.length;i++){
+						ollis[i].className="";
+					}
+					ollis[clickNum].className="current";
+				}
+				rightArrow.onclick=function(){
+					if(target>=0){
+						
+					}else{
+						clickNum--;
+					}
+					target=-clickNum*490;
+					for(var i=0;i<ollis.length;i++){
+						ollis[i].className="";
+					}
+					ollis[clickNum].className="current";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<div class="inner">
+				<ul>
+					<li><img src="img/01.jpg"/></li>
+					<li><img src="img/02.jpg"/></li>
+					<li><img src="img/03.jpg"/></li>
+					<li><img src="img/04.jpg"/></li>
+					<li><img src="img/05.jpg""/></li>
+				</ul>
+				<div class="arrows">
+					<span id="left-arrow">
+						<
+					</span>
+					<span id="right-arrow">
+						>
+					</span>
+				</div>
+			</div>
+			<ol>
+				<li class="current">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+		</div>
+	</body>
+</html>
